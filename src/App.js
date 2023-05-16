@@ -8,7 +8,6 @@ import "./App.scss";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
-  const [click, setClick] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -18,11 +17,6 @@ function App() {
     return () => clearTimeout(timer);
   }, []);
 
-  function displayfunc() {
-    setClick(true);
-    console.log("hi");
-  }
-
   return (
     <div className="app">
       <section className={`loading ${isLoading ? "visible" : "hidden"}`}>
@@ -31,26 +25,22 @@ function App() {
           alt="sonderform schriftzug in schwarz"
         />
       </section>
-      <section id="content">
+      <section id="content" className="flex align-center justify-center">
         <img
           src="https://uploads-ssl.webflow.com/63cfeb61947ce5d5a339a1de/64107694f02d59252aaeb96d_sf.svg"
           alt="sonderform schriftzug"
+          className="head"
         />
         <div className="slider-container">
-          <div className="flex row justify-center wrap inner">
-            {/* {data.map((project) => (
-              <Slide
-                project={project}
-                key={project.id}
-                onOpen={click}
-              />
-            ))} */}
-            
-            <Slide
+          <div className="flex row justify-start inner">
+            {data.map((project) => (
+              <Slide project={project} key={project.id} />
+            ))}
+
+            {/* <Slide
                 project={data[0]}
                 key={data[0].id}
-                onOpen={click}
-              />
+              /> */}
           </div>
         </div>
       </section>
